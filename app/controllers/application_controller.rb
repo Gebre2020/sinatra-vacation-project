@@ -9,11 +9,15 @@ class ApplicationController < Sinatra::Base
     set :session_secrect, 'secret'
   end
 
+  # define general routes
+  # any route/request that doesn't involve
   get "/" do
     # "Hello World!!"
      erb :'welcome'
   end
-
+  
+  #about route
+  # contant page
   # a route that retreives posts
   
 end

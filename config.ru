@@ -8,5 +8,6 @@ require_relative './config/environment.rb'
 # use controller_name
 
 # use Rack::MethodOverride
-# use UserController
+use UsersController
+use packagesController
 run ApplicationController

@@ -45,7 +45,8 @@ Sinatra is a library build with Ruby code
 key terms
 - erb => embedded ruby
 - render => display
-- persist/response flows
+- persist/response flows => adding data to your db
+- request/response flows
 - DSL - Domain Specific Language
 - MVC - models, views, controllers
 

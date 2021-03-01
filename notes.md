@@ -56,4 +56,9 @@ Client vs Server
 
   MVC
    - Controller should alwaysbe the middle man between model and view
-   - View and madel should never directly communicate
+   - View and model should never directly communicate
+
+Differnce between find and find_by
+
+name attribute of input field determines the keys in your params hash
+

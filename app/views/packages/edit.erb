@@ -1,0 +1,8 @@
+this is our edit form
+
+<form action="/packages/<%= @package.id %>" method="POST">
+  <input type="hidden" name="_method" value="patch">
+  Package Name: <input type="text" name="package_name" value="<%= @package.package_name %>">
+  Budget: <input type="number" name="budget" value="<%= @package.budget%>">
+  <input type=submit value="Edit Package">
+</form>

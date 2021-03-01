@@ -22,25 +22,32 @@ class PackagesController < ApplicationController
   # show route
   get '/packages/:id' do 
     # binding.pry
-    @package = Package.find(params[:id])
+    get_post
     # restieve the requested package
     # show details of that package
     erb :'/packages/show'
   end
 
   post '/packages' do 
-    # binding.pry
     # create the new package
     # redirect our user somewhere/show route/
+    
+    # binding.pry
+    #  @package = Package.new(package_name: params[:package_name], budget: params[:budget])
+    #  @package = Package.new(params)
+    #  @package.save
+    @package = Package.create(params)
+    redirect "/packages/#{@package.id}"
 
-    @package = Package.new(params)
-    @package.user_id = session[:user_id]
-    @package.save
+    # @package.user_id = session[:user_id]
+    # @package = Package.new(params)
+    # @package.save
   end
 
   # our user just requested to see an edit form for a package
   get '/packages/:id/edit' do 
-    @package = Package.find(params[:id])
+    get_post
+    erb :"/packages/edit"
   # retreive the object 
   # autofill a form with the details of that object
   # render to our user to fill out
@@ -48,15 +55,26 @@ class PackagesController < ApplicationController
 
   #user just submitted the edit form
   patch '/packages/:id' do  # put '/packages/:id' do
-    @package = Package.find(params[:id])
+    get_post
+    #binding.pry
+    @package.update(package_name: params[:package_name], budget: params[:budget])
+    redirect "/packages/#{@package.id}"
   end
 
   delete '/packages/:id' do 
-    @package = Package.find(params[:id])
+    get_post
     @package.destroy
     redirect '/packages'   # to the index page
     # no view
-end
+  end
+
+  helpers do
+
+    def get_post
+      @package = Package.find_by(id:params[:id])
+    end
+
+  end
 
 
 end

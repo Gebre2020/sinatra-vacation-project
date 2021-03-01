@@ -1,2 +1,9 @@
 Package name: <%= @package.package_name %><br>
 Budget: <%= @package.budget %><br>
+
+<a href="/packages/<%= @package.id %>/edit">Edit Package</a>
+
+<form action="/packages/<%= @package.id %>" method="POST">
+  <input type="hidden" name="_method" value="delete">
+  <input type=submit value="Delete Package">
+</form>

@@ -1,5 +1,10 @@
 <p>index page</p>
 
 <% @packages.each do |p| %>
-  Package Name: <%= p.package_name %> - <%= p.id %> <br><br>
+ <p>Package Name: <%= p.package_name %> - <%= p.id %> <br>
+    Budget:<%= p.budget %><br>
+    <% if current_user == p.user %>
+      <a href="/packages/<%= p.id %>/edit">Edit</a><br><br>
+    <% end %>
+  </p>
 <% end %>

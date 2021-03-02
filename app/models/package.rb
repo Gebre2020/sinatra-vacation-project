@@ -1,6 +1,6 @@
 class Package < ActiveRecord::Base
    # belong to both user and vacation
-   belongs_to :user 
+   belongs_to :user
 
    # package.user / read the author that the post belongs to
    # package.user= / set/writter the author that post belongs to

@@ -11,5 +11,10 @@ class User < ActiveRecord::Base
     has_many :vacations, through: :packages
     # has many vacations through package
     # user.vacations
-    # 
+    
+    has_secure_password
+    # adds to salt to our passwords
+    # what is salt? extra string, random characters
+
+
 end

@@ -14,13 +14,18 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <%# <div class="wrapper"> %>
+    <div class="wrapper">
       <h1>Hello from layout</h1>
         <% flash.keys.each do |type| %>
           <div data-alert class="flash<%= type %> alert-box radius">
             <%= flash[type] %>
           </div>
         <% end %>
+        <div>
+          <a href="/packages/new">New Package || </a> 
+          <a href="/packages">Packages || </a>
+          <a href="/logout" style="float: right;"> Log Out </a>
+        </div>
 
         <%= yield %>
 

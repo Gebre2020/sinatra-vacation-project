@@ -5,11 +5,13 @@ class PackagesController < ApplicationController
   #         = what our user sees
   # <% %> = what our views process
 
-  # our user just requested all packages
-  # index route
+  
+  # INDEX ROUTE
+  # Create a route that returns all the packages
   get '/packages' do
      # "welcome"
     @packages = Package.all
+    # @packages = current_user.packages
     erb :'packages/index'
   end
   
@@ -41,7 +43,7 @@ class PackagesController < ApplicationController
     
     # @package = Package.create(params)
     redirect "/packages/#{@package.id}"
-
+    #redirect '/packages'
   end
 
   # our user just requested to see an edit form for a package
@@ -73,13 +75,29 @@ class PackagesController < ApplicationController
     # end
   end
 
-  delete '/packages/:id' do 
-    get_package
-    @package.destroy
-    redirect '/packages'   # to the index page
-    # no view
-  end
+  # delete '/packages/:id' do 
+  #   get_package
+    
+  #     if @packages.user_id == session[:user_id]
+  #       @packages.delete
+  #       redirect '/packages'
+  #     else
+  #       flash[:error] = "You are not authorized!"
+  #       redirect '/packages'
+  #     end
+  # end
 
+  delete "/packages/:id" do 
+    # @packages = Packages.find_by(user_id: current_user.id, package_id: params["id"])
+    get_package
+    redirect_if_not_authorized
+    @package.destroy
+    #redirect "/users/#{current_user.id}/edit"
+    redirect '/packages'
+  end 
+
+
+  
   private
 
     def get_package
@@ -88,7 +106,7 @@ class PackagesController < ApplicationController
 
     def redirect_if_not_authorized
       if @package.user != current_user
-        flash[:error] = "You can't make this edit, you don't own this"
+        flash[:error] = "You can't make this edit/delete, you don't own this"
         redirect '/packages'
       end
     end

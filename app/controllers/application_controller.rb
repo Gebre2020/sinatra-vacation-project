@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secrect, 'secret'
+    set :session_secret, 'secret'
     register Sinatra::Flash
   end
 
@@ -21,12 +21,7 @@ class ApplicationController < Sinatra::Base
   #about route
   # contant page
   # a route that retreives posts
-  
-  # logout 'logout' delete => clears our session
-  get '/logout' do
-    session.clear
-    redirect '/login'
-  end
+
 
   helpers do  # makes these methods available to controller and views
 
@@ -35,11 +30,15 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by_id(session[:user_id])  # memoization
     end
 
-    # check if a user logged in
-    def lodded_in?
+    # check if a user logged in and return will be a true or false value
+    def logged_in?
       !!session[:user_id]
     end
-    
+
+    def logout
+      session.clear
+    end
+
   end
  
 end

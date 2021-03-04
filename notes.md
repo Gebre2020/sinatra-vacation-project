@@ -35,7 +35,7 @@ where to start?
 
   - set up classes
   - set up my database
-  - user controller
+  - users controller
   - packages controller
 
 
@@ -61,4 +61,6 @@ Client vs Server
 Differnce between find and find_by
 
 name attribute of input field determines the keys in your params hash
+
+
 

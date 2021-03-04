@@ -62,5 +62,10 @@ Differnce between find and find_by
 
 name attribute of input field determines the keys in your params hash
 
+# all routes pertaining to package model
+   <%= %> = interpolates ruby code in views
+           = what our user sees
+           
+   <% %> = what our views process
 
 

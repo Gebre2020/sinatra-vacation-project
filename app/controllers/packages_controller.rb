@@ -1,13 +1,8 @@
 class PackagesController < ApplicationController
-
-  # all routes pertaining to package model
-  # <%= %> = interpolates ruby code in views
-  #         = what our user sees
-  # <% %> = what our views process
-
-  
+ 
   # INDEX ROUTE
   # Create a route that returns all the packages
+
   get '/packages' do
      # "welcome"
     @packages = Package.all
@@ -23,10 +18,13 @@ class PackagesController < ApplicationController
   # our user wants to see details of one package
   # show route
   get '/packages/:id' do   
-    get_package
+    if get_package != nil
     # restieve the requested package
     # show details of that package
-    erb :'/packages/show'
+      erb :'/packages/show'
+    else
+      flash[:error] = "The Package Doesn't Exist!! "
+    end
   end
 
   post '/packages' do 
@@ -74,18 +72,6 @@ class PackagesController < ApplicationController
     #   redirect '/packages'
     # end
   end
-
-  # delete '/packages/:id' do 
-  #   get_package
-    
-  #     if @packages.user_id == session[:user_id]
-  #       @packages.delete
-  #       redirect '/packages'
-  #     else
-  #       flash[:error] = "You are not authorized!"
-  #       redirect '/packages'
-  #     end
-  # end
 
   delete "/packages/:id" do 
     # @packages = Packages.find_by(user_id: current_user.id, package_id: params["id"])

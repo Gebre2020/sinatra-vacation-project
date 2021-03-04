@@ -1,13 +1,13 @@
 class Package < ActiveRecord::Base
-   # belong to both user and vacation
+   # belong to both user and package
    belongs_to :user
 
-   # package.user / read the author that the post belongs to
-   # package.user= / set/writter the author that post belongs to
+   # package.user / read the user that the package belongs to
+   # package.user= / set/writter the user that package belongs to
    # package.build_user(hash of attributes)
-   # package.creat_user(hash of attributes)
+   # package.create_user(hash of attributes)
    belongs_to :vacation
 
-   # what kind of table is post: joint table
+  
 
 end

@@ -14,9 +14,7 @@ class UserController < ApplicationController
         # receive data from the form inside of params hash
         # create a new user object with the data
         user = User.new(params)
-        # validate our user object
-       
-      
+        # validate our user object     
         if params["username"].blank? || params["password"].blank?
          flash[:error] = "Username and password can't be blank"
           erb :"/users/signup"
@@ -27,9 +25,7 @@ class UserController < ApplicationController
           user.save
           session[:user_id] = user.id 
           redirect '/'
-        end 
-
-       
+        end     
         # if our user is valid
            # persist the new object
         # else
@@ -37,9 +33,7 @@ class UserController < ApplicationController
         # user must use unique data/ put a message this data is already exiting
     end
 
-    
     #login  '/login' read => querying our user and reading user attribute
-
     get '/login' do  # render the login form        
         erb :"/users/login"
     end

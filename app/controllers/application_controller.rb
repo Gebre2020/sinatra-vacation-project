@@ -13,14 +13,13 @@ class ApplicationController < Sinatra::Base
   # define general routes
   # any route/request that doesn't involve
   get "/" do
-    # binding.pry
     # "Hello World!!"
      erb :welcome
   end
   
-  #about route
+  # about route
   # contant page
-  # a route that retreives posts
+  # a route that retreives packages
 
 
   helpers do  # makes these methods available to controller and views

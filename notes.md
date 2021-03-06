@@ -1,16 +1,16 @@
 [] - User can create, read, update and delete a packages
 
-Interface:
+# Interface:
   - User can view package form
   - User can submit package form
   - User can edit package 
   - User can delete/cancel package
-User class
+# User class
   - attributes => name, password
   - user signs up/logs
   - has many packages
 
-User controller and views
+# User controller and views
   - '/users/signup' => renders sign up form 
   - '/users/signup' => processes sign up form, creates user, post 
   - '/users/login' => renders login form  
@@ -18,11 +18,11 @@ User controller and views
   - need to set sessions
   - user can view their packages, '/users/:id/packages'
 
-package class 
+# package class 
   - attributes => package_name, package_budget, user_id, vaction_id
   - package belongs to user
 
-package controller and views
+# package controller and views
   - '/packages/new => renders new package form
   - '/packages' => submits package
   - '/packages' => renders all packages
@@ -31,7 +31,7 @@ package controller and views
   - '/packages/:id => update instance
   - '/packages/:id/deletes instance
 
-where to start?
+# where to start?
 
   - set up classes
   - set up my database
@@ -39,7 +39,7 @@ where to start?
   - packages controller
 
 
-Sinatra basic
+# Sinatra basic
 Sinatra is a library build with Ruby code
 
 key terms
@@ -50,7 +50,7 @@ key terms
 - DSL - Domain Specific Language
 - MVC - models, views, controllers
 
-Client vs Server
+# Client vs Server
   - client or user is the requesting side
   - server is application/us
 
@@ -58,7 +58,7 @@ Client vs Server
    - Controller should alwaysbe the middle man between model and view
    - View and model should never directly communicate
 
-Differnce between find and find_by
+# Differnce between find and find_by
 
 name attribute of input field determines the keys in your params hash
 

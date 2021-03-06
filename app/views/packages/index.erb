@@ -2,11 +2,10 @@
 
 <% @packages.each do |p| %>
  <p>Package Name: <%= p.package_name %> - <%= p.id %> <br>
-    Budget:<%= p.budget %><br>
+    Budget:<%= p.budget %><br><br>
     <% if current_user == p.user %>
       <a href="/packages/<%= p.id %>/edit">Edit</a><br>
       <a href="/packages/<%= p.id %>/delete">Delete</a><br><br>
     <% end %>
   </p>
 <% end %>
-

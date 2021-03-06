@@ -9,12 +9,14 @@ class PackagesController < ApplicationController
     # @packages = current_user.packages
     erb :'packages/index'
   end
-  
+
+  # CREATE
   # user just made a request to view form to add a new package
   get '/packages/new' do  
     erb :'/packages/new'
   end
-
+  
+  # READ
   # our user wants to see details of one package
   # show route
   get '/packages/:id' do   
@@ -23,7 +25,7 @@ class PackagesController < ApplicationController
     # show details of that package
       erb :'/packages/show'
     else
-      flash[:error] = "The Package Doesn't Exist!! "
+      erb :'/error'
     end
   end
 
@@ -44,6 +46,7 @@ class PackagesController < ApplicationController
     #redirect '/packages'
   end
 
+  # UPDATE
   # our user just requested to see an edit form for a package
   get '/packages/:id/edit' do  
     get_package
@@ -73,6 +76,7 @@ class PackagesController < ApplicationController
     # end
   end
 
+  # DELETE
   delete "/packages/:id" do 
     # @packages = Packages.find_by(user_id: current_user.id, package_id: params["id"])
     get_package
@@ -92,7 +96,7 @@ class PackagesController < ApplicationController
 
     def redirect_if_not_authorized
       if @package.user != current_user
-        flash[:error] = "You can't make this edit/delete, you don't own this"
+        flash[:error] = "You can't make this edit/delete!!"
         redirect '/packages'
       end
     end

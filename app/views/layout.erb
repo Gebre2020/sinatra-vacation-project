@@ -22,9 +22,15 @@
           </div>
         <% end %>
         <div>
-          <a href="/packages/new">New Package || </a> 
-          <a href="/packages">Packages || </a>
-          <a href="/logout" style="float: right;"> Log Out </a>
+        <a href="/"> Home || </a>
+        <% if logged_in? %>
+            <a href="/packages/new">New Package || </a> 
+            <a href="/packages">Packages || </a><br> 
+            <a href="/logout" style="float: right;"> Log Out </a>
+          <% else %>
+            <a href="/signup"> Sign Up || </a>
+            <a href="/login"> Log In </a>
+          <% end %>
         </div>
 
         <%= yield %>

@@ -23,11 +23,12 @@ Sessions:
 authentication:
   - bcrypt gem
   - user model, has_secure_password
+  - change our users table, password => password_digest
 
 user is logged in?
   - redirect to homepage, if logged in
   - can't see the signup or login form if logged in
 
 helper methods 
-  - application controller => methods available to controllers
+  - application controller => methods available to controllers or
   - app/helpers => helper methods used in your views       

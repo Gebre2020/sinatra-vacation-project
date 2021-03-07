@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
   # any route/request that doesn't involve
   get "/" do
     # "Hello World!!"
-     erb :welcome
+    erb :welcome
   end
   
   # about route

@@ -10,7 +10,6 @@ class UserController < ApplicationController
     end
 
     post '/signup' do
-        #binding.pry
         # receive data from the form inside of params hash
         # create a new user object with the data
         user = User.new(params)
@@ -46,16 +45,13 @@ class UserController < ApplicationController
             erb :"/users/login."
         elsif
           user = User.find_by_username(params[:username])
-        # binding.pry
         # if user exists && password is correct
         if user && user.authenticate(params[:password])
           # login user
             session[:user_id] = user.id
-          # redirect
             redirect '/packages'
           else
             flash[:error] = "Invalid login"
-            # invalid login
             redirect '/login'
           end
         end
@@ -75,9 +71,4 @@ class UserController < ApplicationController
       logout
       redirect '/'
     end
-
-
-
-    
-
 end

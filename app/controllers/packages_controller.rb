@@ -87,7 +87,6 @@ class PackagesController < ApplicationController
   end 
 
 
-  
   private
 
     def get_package

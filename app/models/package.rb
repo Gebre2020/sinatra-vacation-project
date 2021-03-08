@@ -8,6 +8,4 @@ class Package < ActiveRecord::Base
    # package.create_user(hash of attributes)
    belongs_to :vacation
 
-  
-
 end

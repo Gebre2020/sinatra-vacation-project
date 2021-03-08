@@ -16,5 +16,4 @@ class User < ActiveRecord::Base
     # adds to salt to our passwords
     # what is salt? extra string, random characters
 
-
 end

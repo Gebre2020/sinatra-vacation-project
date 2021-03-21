@@ -5,15 +5,28 @@ class PackagesController < ApplicationController
 
   get '/packages' do
      # "welcome"
-    @packages = Package.all
-    # @packages = current_user.packages
-    erb :'packages/index'
+     
+    if @packages = current_user
+      @packages = Package.all
+      erb :'packages/index'
+    else
+      flash[:error] = "You are not login, please signup or login"
+      redirect '/'
+    end
   end
 
   # CREATE
   # user just made a request to view form to add a new package
   get '/packages/new' do  
-    erb :'/packages/new'
+    # erb :'/packages/new'
+
+    if @packages = current_user
+      @packages = Package.all
+      erb :'packages/new'
+    else
+      flash[:error] = "You are not login, please signup or login!"
+      redirect '/'
+    end
   end
   
   # READ
@@ -21,7 +34,7 @@ class PackagesController < ApplicationController
   # show route
   get '/packages/:id' do   
     if get_package != nil
-    # restieve the requested package
+    # retrieve the requested package
     # show details of that package
       erb :'/packages/show'
     else
@@ -39,11 +52,15 @@ class PackagesController < ApplicationController
 
     @package = Package.new(params)
     @package.user_id = session[:user_id]
-    @package.save
-    
-    # @package = Package.create(params)
-    redirect "/packages/#{@package.id}"
-    #redirect '/packages'
+    if params[:package_name].blank? || params[:budget].blank?
+      flash[:error] = " Write Package name or Budget, can not be blank!"
+      redirect '/packages/new'
+    else
+      @package.save
+      # @package = Package.create(params)
+      redirect "/packages/#{@package.id}"
+      #redirect '/packages'
+    end
   end
 
   # UPDATE
@@ -57,9 +74,9 @@ class PackagesController < ApplicationController
     #   flash[:error] = "You are not the owner"
     #   redirect '/packages'
     # end
-  # retreive the object 
-  # autofill a form with the details of that object
-  # render to our user to fill out
+    # retreive the object 
+    # autofill a form with the details of that object
+    # render to our user to fill out
   end
 
   #user just submitted the edit form
@@ -77,20 +94,21 @@ class PackagesController < ApplicationController
   end
 
   # DELETE
-  delete "/packages/:id" do 
+  delete '/packages/:id/delete' do 
     # @packages = Packages.find_by(user_id: current_user.id, package_id: params["id"])
     get_package
     redirect_if_not_authorized
-    @package.destroy
+    get_package.delete
+    # @package.destroy(params[:id])
     #redirect "/users/#{current_user.id}/edit"
-    redirect '/packages'
+    redirect to '/packages'
   end 
 
 
   private
 
     def get_package
-      @package = Package.find_by(id:params[:id])
+      @package = Package.find_by_id(params[:id])
     end
 
     def redirect_if_not_authorized

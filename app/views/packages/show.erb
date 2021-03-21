@@ -4,6 +4,6 @@ Budget: <%= @package.budget %><br><br>
 <a href="/packages/<%= @package.id %>/edit">Edit Package</a><br>
 
 <form action="/packages/<%= @package.id %>" method="POST">
-  <input type="hidden" name="_method" value="delete"><br>
-  <input type=Submit value="Delete Package"><br>
+  <input id="hidden" type="hidden" name="_method" value="DELETE"><br>
+  <input type="submit" value="Delete Package"><br>
 </form>

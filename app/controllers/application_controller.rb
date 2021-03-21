@@ -8,7 +8,12 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, 'secret'
     register Sinatra::Flash
+    set :show_exceptions, false
   end
+
+  # not_found do
+  #   erb :error
+  # end
 
   # define general routes
   # any route/request that doesn't involve
@@ -21,6 +26,9 @@ class ApplicationController < Sinatra::Base
   # contant page
   # a route that retreives packages
 
+  error ActiveRecord::RecordNotFound do
+    redirect '/'
+  end
 
   helpers do  # makes these methods available to controller and views
 

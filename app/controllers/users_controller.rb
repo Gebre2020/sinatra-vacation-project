@@ -46,7 +46,7 @@ class UserController < ApplicationController
         # if user exists && password is correct
         if user && user.authenticate(params[:password])
           # login user
-          session[:user_id] = user.id
+          session[:user_id] = user.id    # user logging in
           redirect '/packages'
         else
           flash[:error] = "Invalid username or password login, please login with the correct input!!"

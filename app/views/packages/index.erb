@@ -1,12 +1,15 @@
 <h2> Click  New package To Create! <h2>
-<h3>List of Vacation Package</h3>
+<h3>List of All Users Vacation Package</h3>
 
-<% @packages.each do |p| %>
- <p>Package Name: <%= p.package_name %> - <%= p.id %> <br>
-    Budget:<%= p.budget %><br><br>
-    <% if current_user == p.user %>
-      <a href="/packages/<%= p.id %>/edit">Edit</a><br>
-      <a href="/packages/<%= p.id %>/delete">Delete</a><br><br>
+<% @packages.each do |package| %>
+ 
+    <% if current_user == package.user %>
+      <p>Package Name: <%= package.package_name %> - <%= package.id %> <br>
+         Budget:<%= package.budget %><br><br>
+         <a href="/packages/<%= package.id %>/edit">Edit</a><br>
+         <a href="/packages/<%= package.id %>/delete">Delete Package</a><br><br>
     <% end %>
-  </p>
+    </p>
 <% end %>
+
+

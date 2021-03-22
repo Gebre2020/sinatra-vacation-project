@@ -94,14 +94,14 @@ class PackagesController < ApplicationController
   end
 
   # DELETE
-  delete '/packages/:id/delete' do 
+  delete '/packages/:id' do 
     # @packages = Packages.find_by(user_id: current_user.id, package_id: params["id"])
     get_package
     redirect_if_not_authorized
-    get_package.delete
+    @package.destroy
     # @package.destroy(params[:id])
     #redirect "/users/#{current_user.id}/edit"
-    redirect to '/packages'
+    redirect '/packages'
   end 
 
 

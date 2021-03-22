@@ -14,25 +14,24 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <h1>Hello from layout</h1>
+    <div class="wrapper" style="margin:15px">      
         <% flash.keys.each do |type| %>
           <div data-alert class="flash<%= type %> alert-box radius">
             <%= flash[type] %>
           </div>
         <% end %>
-        <div>
-        <a href="/"> Home || </a>
+        <div style="margin-bottom:20px">
+        <a href="/"> Home &nbsp;&nbsp; </a>
         <% if logged_in? %>
-            <a href="/packages/new">New Package || </a> 
-            <a href="/packages">Packages || </a><br>
+            <a href="/packages/new">New Package &nbsp;&nbsp; </a> 
+            <a href="/packages">Packages &nbsp;&nbsp; </a>
             <a href="/logout" style="float: right;"> Log Out </a>
           <% else %>
-            <a href="/signup"> Sign Up || </a>
+            <a href="/signup"> Sign Up &nbsp;&nbsp; </a>
             <a href="/login"> Log In </a>
           <% end %>
         </div>
-
+        <hr/>
         <%= yield %>
 
       <footer class="branding">

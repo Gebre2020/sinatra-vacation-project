@@ -11,9 +11,9 @@ class ApplicationController < Sinatra::Base
     set :show_exceptions, false
   end
 
-  # not_found do
-  #   erb :error
-  # end
+  not_found do
+    erb :error
+  end
 
   # define general routes
   # any route/request that doesn't involve

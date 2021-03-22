@@ -15,29 +15,19 @@ class ApplicationController < Sinatra::Base
     erb :error
   end
 
-  # define general routes
-  # any route/request that doesn't involve
   get "/" do
-    # "Hello World!!"
     erb :welcome
   end
   
-  # about route
-  # contant page
-  # a route that retreives packages
-
   error ActiveRecord::RecordNotFound do
     redirect '/'
   end
 
-  helpers do  # makes these methods available to controller and views
-
-    # return the logged in user
-    def current_user  # return logged in user
+  helpers do 
+    def current_user  
       @current_user ||= User.find_by_id(session[:user_id])  # memoization
     end
 
-    # check if a user logged in and return will be a true or false value
     def logged_in?
       !!session[:user_id]
     end

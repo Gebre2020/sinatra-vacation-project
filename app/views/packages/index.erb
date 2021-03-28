@@ -3,14 +3,14 @@
 
 <% @packages.each do |package| %>
  
-    <% if current_user == package.user %>
+   
       Package Name: <%= package.package_name %> - <%= package.id %> <br>
-         Budget:<%= package.budget %><br><br>
+        Budget:<%= package.budget %><br><br>
 
          <a href="/packages/<%= package.id %>" style="text-decoration:none">Show&nbsp;&nbsp;</a>
          <a href="/packages/<%= package.id %>/edit" style="text-decoration:none"> Edit</a><br>
         <br/>
-    <% end %>
+    
     
     
 <% end %>

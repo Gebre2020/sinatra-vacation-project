@@ -7,7 +7,7 @@
   - User can delete/cancel package
 # User class
   - attributes => name, password
-  - user signs up/logs
+  - user signs up/login
   - has many packages
 
 # User controller and views

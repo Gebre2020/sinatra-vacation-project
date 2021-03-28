@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
     erb :error
   end
 
-  get "/" do
+  get "/" do   # home page
     erb :welcome
   end
   
@@ -23,7 +23,8 @@ class ApplicationController < Sinatra::Base
     redirect '/'
   end
 
-  helpers do 
+  helpers do   # available to controller and views
+
     def current_user  
       @current_user ||= User.find_by_id(session[:user_id])  # memoization
     end

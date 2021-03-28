@@ -7,7 +7,8 @@ require_relative './config/environment.rb'
 # another controller
 # use controller_name
 
-use Rack::MethodOverride
+use Rack::MethodOverride   # required inorder forms to have a _method, 
+                           # allowing PUT & DELETE action to function
 use PackagesController
 use UserController
 run ApplicationController
